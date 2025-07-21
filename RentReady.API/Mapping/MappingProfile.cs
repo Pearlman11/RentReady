@@ -20,6 +20,11 @@ namespace RentReady.API.Mapping
             CreateMap<Lease, LeaseDto>()
                 .ForMember(dest => dest.Property, opt => opt.MapFrom(src => src.Property))
                 .ForMember(dest => dest.Tenant, opt => opt.MapFrom(src => src.Tenant));
+
+            // Tenant mappings
+            CreateMap<TenantForEditDto, Tenant>();
+            CreateMap<Tenant, TenantDto>()
+                .ForMember(dest => dest.Leases, opt => opt.MapFrom(src => src.Leases));
         }
     }
 }
