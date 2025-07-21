@@ -1,4 +1,4 @@
-namespace RentReady.API.Dtos.Property
+namespace RentReady.API.Dtos
 {
     public class PropertyDto
     {
