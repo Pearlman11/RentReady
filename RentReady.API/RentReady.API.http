@@ -1,0 +1,6 @@
+@RentReady.API_HostAddress = http://localhost:5052
+
+GET {{RentReady.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
