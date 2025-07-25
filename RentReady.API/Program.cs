@@ -4,6 +4,7 @@ using RentReady.API.Interfaces;
 using RentReady.API.Mapping;
 using RentReady.API.Services;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,13 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "RentReady API", Version = "v1" });
 });
 
-builder.Services.AddControllers();
+builder.Services
+       .AddControllers()
+       .AddJsonOptions(opts =>
+       {
+           opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+           opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+       });
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IPropertyService, PropertyService>();
