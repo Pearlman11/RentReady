@@ -8,6 +8,6 @@ namespace RentReady.API.Dtos
         public string PhoneNumber { get; set; } = null!;
         
         // Expanded leases inline
-        public ICollection<LeaseDto>? Leases { get; set; }
+        public ICollection<LeaseSummaryDto>? Leases { get; set; }
     }
 }

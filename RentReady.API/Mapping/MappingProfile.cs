@@ -8,6 +8,8 @@ namespace RentReady.API.Mapping
     {
         public MappingProfile()
         {
+
+            CreateMap<Lease, LeaseSummaryDto>();
             // Entity → DTO
             CreateMap<Property, PropertyDto>();
 
