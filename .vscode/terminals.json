@@ -1,0 +1,58 @@
+{
+  "autorun": true,
+
+  "terminals": [
+    {
+      "name": "API Runner",
+      "command": "dotnet watch run", 
+      "cwd": "./RentReady.API",
+      "icon": "rocket",
+      "color": "terminal.ansiMagenta"
+    },
+    {
+      "name": "Controllers",
+      "command": "clear", 
+      "cwd": "./RentReady.API/Controllers",
+      "icon": "code",
+      "split": "API Runner"
+    },
+
+
+    {
+      "name": "Services",
+      "command": "clear",
+      "cwd": "./RentReady.API/Services",
+      "icon": "server",
+      "color": "terminal.ansiGreen"
+    },
+    {
+      "name": "Interfaces",
+      "command": "clear",
+      "cwd": "./RentReady.API/Interfaces",
+      "icon": "inspect",
+      "split": "Services"
+    },
+
+    {
+      "name": "Data",
+      "command": "clear",
+      "cwd": "./RentReady.API/Data",
+      "icon": "database",
+      "color": "terminal.ansiYellow"
+    },
+    {
+      "name": "DTOs",
+      "command": "clear",
+      "cwd": "./RentReady.API/Dtos",
+      "icon": "files",
+      "split": "Data"
+    },
+    {
+      "name": "Mapping",
+      "command": "clear",
+      "cwd": "./RentReady.API/Mapping",
+      "icon": "git-compare",
+      "split": "Data" 
+    }
+  ]
+}
