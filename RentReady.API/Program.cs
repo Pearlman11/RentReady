@@ -3,26 +3,52 @@ using RentReady.API.Data;
 using RentReady.API.Interfaces;
 using RentReady.API.Mapping;
 using RentReady.API.Services;
+using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//adding DbContext
+// Add DbContext
 builder.Services.AddDbContext<RentReadyContext>(options =>
-
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddControllers();
+// Swagger/OpenAPI setup
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "RentReady API", Version = "v1" });
+});
+
+builder.Services
+       .AddControllers()
+       .AddJsonOptions(opts =>
+       {
+           opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+           opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+       });
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IPropertyService, PropertyService>();
+builder.Services.AddScoped<ILeaseService, LeaseService>();
+builder.Services.AddScoped<ITenantService, TenantService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
-//TODO other services... 
+// TODO: other services...
 
 var app = builder.Build();
-// TODO: Middleware
+
+// Configure Swagger middleware
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "RentReady API v1");
+    });
+}
+
+// TODO: other middleware (e.g., app.UseHttpsRedirection(), app.UseAuthorization())
 
 app.MapControllers();
 
 app.Run();
-
-// 

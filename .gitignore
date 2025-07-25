@@ -59,3 +59,7 @@ docker-compose.override.yml
 .DS_Store
 Thumbs.db
 EOF
+
+# Ignore all build artifacts
+/RentReady.API/bin/
+/RentReady.API/obj/

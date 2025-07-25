@@ -42,6 +42,22 @@ namespace RentReady.API.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Leases");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PropertyId = 1,
+                            StartDate = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TenantId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            PropertyId = 2,
+                            StartDate = new DateTime(2025, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            TenantId = 2
+                        });
                 });
 
             modelBuilder.Entity("RentReady.API.Models.Payment", b =>
@@ -64,6 +80,22 @@ namespace RentReady.API.Migrations
                     b.HasIndex("LeaseId");
 
                     b.ToTable("Payments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Amount = 1200m,
+                            Date = new DateTime(2025, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaseId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Amount = 1500m,
+                            Date = new DateTime(2025, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaseId = 2
+                        });
                 });
 
             modelBuilder.Entity("RentReady.API.Models.Property", b =>
@@ -86,6 +118,22 @@ namespace RentReady.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Properties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "123 Main St",
+                            RentAmount = 1200m,
+                            Unit = "Apt 101"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "456 Oak Ave",
+                            RentAmount = 1500m,
+                            Unit = "Unit B"
+                        });
                 });
 
             modelBuilder.Entity("RentReady.API.Models.Tenant", b =>
@@ -109,6 +157,22 @@ namespace RentReady.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tenants");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "alice@example.com",
+                            Name = "Alice Johnson",
+                            PhoneNumber = "555-1234"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "bob@example.com",
+                            Name = "Bob Williams",
+                            PhoneNumber = "555-5678"
+                        });
                 });
 
             modelBuilder.Entity("RentReady.API.Models.Lease", b =>

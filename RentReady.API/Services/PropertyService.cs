@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using RentReady.API.Data;
 
-using RentReady.API.Dtos.Property;
+using RentReady.API.Dtos;
 using RentReady.API.Interfaces;
 using RentReady.API.Models;
 
