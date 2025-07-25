@@ -9,7 +9,7 @@ using RentReady.API.Models;
 using RentReady.API.Services;
 using Xunit;
 
-namespace RentReady.Tests
+namespace RentReady.Tests.Services
 {
     public class PropertyServiceTests
     {
