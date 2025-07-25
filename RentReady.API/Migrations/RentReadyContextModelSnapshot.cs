@@ -86,6 +86,22 @@ namespace RentReady.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Properties");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "123 Main St",
+                            RentAmount = 1200m,
+                            Unit = "Apt 101"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "456 Oak Ave",
+                            RentAmount = 1500m,
+                            Unit = "Unit B"
+                        });
                 });
 
             modelBuilder.Entity("RentReady.API.Models.Tenant", b =>
