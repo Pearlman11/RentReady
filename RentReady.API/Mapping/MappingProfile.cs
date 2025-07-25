@@ -1,6 +1,6 @@
 using AutoMapper;
 using RentReady.API.Dtos;
-using RentReady.API.Dtos.Property;
+
 using RentReady.API.Models;
 
 namespace RentReady.API.Mapping
@@ -14,6 +14,12 @@ namespace RentReady.API.Mapping
 
             // DTO → Entity
             CreateMap<PropertyForEditDto, Property>();
+
+            // Lease mappings
+            CreateMap<LeaseForEditDto, Lease>();
+            CreateMap<Lease, LeaseDto>()
+                .ForMember(dest => dest.Property, opt => opt.MapFrom(src => src.Property))
+                .ForMember(dest => dest.Tenant, opt => opt.MapFrom(src => src.Tenant));
         }
     }
 }

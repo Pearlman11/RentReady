@@ -15,6 +15,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IPropertyService, PropertyService>();
+builder.Services.AddScoped<ILeaseService, LeaseService>();
 
 //TODO other services... 
 
